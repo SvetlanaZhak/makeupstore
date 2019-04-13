@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <title>Add Item</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Item</h1>
+	<div>
+		<form th:object="${makeup}" th:action="@{save}" action="#" method="post">
+		  
+		  <label for="brand">Brand</label>
+			<input type="text" id="brand" th:field="*{brand}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="Name">Name</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	
+										
+		  	<label for="size">Size</label>
+			<input type="text" th:field="*{size}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="price">Price</label>
+			<input type="text" th:field="*{price}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="deplist">Category</label>
+			 <select id="deplist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categorys}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>
+					
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
