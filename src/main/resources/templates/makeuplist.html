@@ -7,51 +7,49 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
-	<div class="col-md-4">
-<h1>Makeup List</h1>
-</div>
-	<div class="col-md-4">
-	<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+<div class="m-4">
 	
-	
-	</div>
-	<div class="col-md-4" style="padding:20px 0">
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
-		</form>
-</div>
+<h1>Makeupstore database</h1>
+<a href="/download">Get Excel list</a>
 
-<table class="table table-striped">
+	<div class="float-right" style="padding:10px 0">
+		<form th:action="@{/logout}" method="post">
+		<p th:inline="text">You are logged in as: [[${#httpServletRequest.remoteUser}]]</p>
+			<input type="submit" value="Sign Out" class="btn btn-dark"/>
+		</form>
+	</div>
+	
+    <table class="table table-bordered table-striped table-info table-hover ">
+		<thead class="thead-dark">
 <tr>
-		   <th>Brand</th>
+		  <th style="width: 25%">Brand</th>
 		    <th>Name</th>
 		    <th>Size</th>
 		      <th>Price</th>
 		      <th>Category</th>
-		    	<th sec:authorize="hasRole('ADMIN')"> </th>
+		    	<th sec:authorize="hasAuthority('ADMIN')"> </th>
 		         
 		</tr>  
 <tbody>
 
 
-<tr th:each = "makeup: ${makeuplist}">
+<tr th:each = "makeup: ${makeups}">
 
 
-<td th:text=${makeup.brand}></td>
-<td th:text=${makeup.name}></td>
-<td th:text=${makeup.size}></td>
-<td th:text=${makeup.price}></td>
-<td th:text="${makeup.category.name}"></td>
-<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${makeup.id})}" class="btn btn-xs btn-danger">Delete</a></td>
+<td style="font-weight:bold"  th:text=${makeup.brand}></td>
+<td th:text=${makeups.name}></td>
+<td th:text=${makeups.size}></td>
+<td th:text=${makeups.price}></td>
+<td th:text="${makeups.category.categoryname}"></td>
+<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${makeups.id})}" class="btn btn-xs btn-danger">Delete</a></td>
 
-	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${makeup.id})}" class="btn btn-xs btn-danger">Edit</a></td> 
+	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${makeups.id})}" class="btn btn-xs btn-danger">Edit</a></td> 
  
 </tr>
 </tbody>
 
 </table>
-<a class="btn btn-sm btn-success" th:href="@{/add}">Add Item</a>
+<button sec:authorize="hasAuthority('ADMIN')"  type="button" class="btn btn-dark"> <a href="/add">Add new disc</a>  </button> 
 </div>
 </body>
 </html>

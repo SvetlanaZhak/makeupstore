@@ -1,40 +1,45 @@
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <title>Add Item</title>
+    <title>Makeup Store</title>
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
-	<h1>Add Item</h1>
-	<div>
-		<form th:object="${makeup}" th:action="@{save}" action="#" method="post">
-		  
-		  <label for="brand">Brand</label>
+<body class="m-4" >
+	<h1>Add a new item</h1>
+	 <div class="card-body p-3 mb-2 bg-info text-white" style="width: 30%" >
+        
+		<form th:object="${makeup}" th:action="@{saveadded}" action="#" method="post">
+		  	<label for="brand">Brand</label>
 			<input type="text" id="brand" th:field="*{brand}" />
+			<div th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">Brand Error</div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-		  	<label for="Name">Name</label>
+		  	<label for="name">Name</label>
 			<input type="text" id="name" th:field="*{name}" />
+			<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-		  	
-										
 		  	<label for="size">Size</label>
 			<input type="text" th:field="*{size}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
+			<div th:if="${#fields.hasErrors('size')}" th:errors="*{size}">Size Error</div>
+			<div style="clear: both; display: block; height: 10px;"></div>	
 			
-		  	<label for="price">Price</label>
+			
+			<label for="price">Price</label>
 			<input type="text" th:field="*{price}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-			<label for="deplist">Category</label>
-			 <select id="deplist" th:field="*{category}" class="form-control">
-       			<option th:each="category: ${categorys}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+			<div th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
+			<div style="clear: both; display: block; height: 10px;"></div>	
+							
+		  	<label for="category">Category</label>
+			 <select style="width: 30%" id="category" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.categoryname}"></option>
     		</select>
-					
+			
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save"></input>
+			<input type="submit" value="Save" class="btn btn-dark"/>
 		</form>
 	</div>
 </body>

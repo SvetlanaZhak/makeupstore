@@ -4,5 +4,5 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface MakeupRepository extends CrudRepository <Makeup, Long> {
-	List<Makeup> findById(long Id);
+	List<Makeup> findByName(String name);
 }

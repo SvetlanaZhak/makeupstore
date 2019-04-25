@@ -34,12 +34,14 @@ public CommandLineRunner makeupDemo(MakeupRepository repository, CategoryReposit
 		repository.save(new Makeup("Elizabeth Arden", "Eight Hour Cream Nourishing Lip Balm ", "50 ml", "€19,95", drepository.findByName("Face product").get(0)));
 		repository.save(new Makeup("Revolution", "Makeup Luxury Banana Powder", "42 g", "€14,25", drepository.findByName("Face product").get(0)));
 		
+		//Password
+		
 		User user1 = new User("user", "$2a$04$RViIFdkClmAyI1mQg/32v.Qg2C2grOqxiX5r18rxSWRX.oKZNkRe6", "USER");
 		User user2 = new User("admin", "$2a$04$TUKy8DAFdqAKqONx7SR4ze9R3eOr3tmX7K0HKh2qypgGzNAgLrbbK", "ADMIN");
 		urepository.save(user1);
 		urepository.save(user2);
 		
-		log.info("fetch all items");
+		log.info("Fetch all items");
 		for (Makeup makeup : repository.findAll()) {
 			log.info(makeup.toString());
 		}

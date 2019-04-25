@@ -11,19 +11,19 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long categoryid;
-	private String name;
-	
+	private String categoryname;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-	private List<Makeup> makeuplist;
-	
+	private List<Makeup> makeups;
+
 	public Category() {}
 	
-	public Category(String name) {
+	public Category(String categoryname) {
 		super();
-		this.name = name;
+		this.categoryname = categoryname;
 	}
 	
 	public Long getCategoryid() {
@@ -34,24 +34,24 @@ public class Category {
 		this.categoryid = categoryid;
 	}
 	
-	public String getName() {
-		return name;
+	public String getCategoryname() {
+		return categoryname;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setCategoryname(String categoryname) {
+		this.categoryname = categoryname;
 	}
 
-	public List<Makeup> getMakeuplist() {
-		return makeuplist;
+	public List<Makeup> getMakeups() {
+		return makeups;
 	}
 
-	public void setMakeuplist(List<Makeup> makeuplist) {
-		this.makeuplist = makeuplist;
+	public void setMakeups(List<Makeup> makeups) {
+		this.makeups = makeups;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
+		return "Category [categoryid=" + categoryid + ", categoryname=" + categoryname + "]";
 	}
 }
