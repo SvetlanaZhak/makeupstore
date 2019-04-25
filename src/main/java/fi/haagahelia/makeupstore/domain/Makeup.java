@@ -90,4 +90,10 @@ public String toString() {
 }
 
 
+public float[] getColumnCount() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
 }
