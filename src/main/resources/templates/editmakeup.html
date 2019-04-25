@@ -10,7 +10,7 @@
 	<div>
 	
 		<form th:object="${makeup}" th:action="@{../save}" action="#" method="post">
-<input type="hidden" th:field="*{id}" class="form-control"/>
+
 <label for="brand">Brand</label>
 <input type="text" id="brand" th:field="*{brand}" class="form-control"/>
 <div th:if="${#fields.hasErrors('name')}" th:errors="*{brand}">Brand Error</div>
@@ -30,8 +30,10 @@
 <input type="text" th:field="*{price}" />
 <label for="category">Category</label>
  <select style="width: 30%" id="category" th:field="*{category}" class="form-control">
- <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.categoryname}"></option>
+ <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
 </select>
+<input type="hidden" th:field="*{id}"/>
+
 <div style="clear: both; display: block; height: 10px;"></div>
 <input type="submit" class="btn btn-success" value="Save"/>
 </form>

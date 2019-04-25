@@ -37,14 +37,14 @@ public class MakeupstoreController {
 	@RequestMapping(value="/makeuplist") 
 	public String makeuplist(Model model) {
 	
-	model.addAttribute("makeuplist", repository.findAll());
+	model.addAttribute("makeups", repository.findAll());
 	return "makeuplist";
 }
 	
 
 	// RESTful service to get all items
     @RequestMapping(value="/makeups", method = RequestMethod.GET)
-    public @ResponseBody List<Makeup> makeupListRest() {	
+    public @ResponseBody List<Makeup> makeuplistRest() {	
         return (List<Makeup>) repository.findAll();
     }    
 
@@ -54,48 +54,31 @@ public class MakeupstoreController {
     	return repository.findById(makeupId);
     } 
 	
-	//Delete item
-	
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteMakeup(@PathVariable("id") Long makeupId, Model model){
-	repository.deleteById(makeupId);
-	return "redirect:../makeuplist";
-}
-	
-	//Add new item
-	@PreAuthorize("hasAuthority('ADMIN')")
-	@RequestMapping(value = "/add")
-	public String addMakeup(Model model){
-		model.addAttribute("makeup", new Makeup());
-		model.addAttribute("category", drepository.findAll());
-		return "addmakeup";
-}
-	
-	//Save new item 
-	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveMakeup (Makeup Makeup) {
-	repository.save(Makeup);
-	return "redirect:makeuplist";
-	}
-	
-	// Edit item
-	
-	@RequestMapping(value = "/edit/{id}")
-	public String editMakeup(@PathVariable("id") Long id, Model model){
-	model.addAttribute("makeup", repository.findById(id));
-	return "editmakeup";
-	}
-	@RequestMapping(value={"/", "/home"})
-	public String homeSecure() {
-		return "home";
-	}  
-    
-    @RequestMapping(value="/hello")
-	public String helloSecure() {
-		return "hello";
-	}
-    
-   
-}
+    @PreAuthorize("hasAuthority('ADMIN')")
+ 		@RequestMapping(value = "/addmakeup")
+ 	    public String addMakeup(Model model){
+ 	    	model.addAttribute("makeup", new Makeup());
+ 	    	model.addAttribute("categories", drepository.findAll());
+ 	        return "addmakeup";
+ 	    }   
+ 		
+ 	    @RequestMapping(value = "/save", method = RequestMethod.POST)
+ 	    public String save(Makeup makeup){
+ 	        repository.save(makeup);
+ 	        return "redirect:makeuplist";
+ 	    }
 
+ 	    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+ 	    public String deleteMakeup(@PathVariable("id") Long makeupId, Model model) {
+ 	    	repository.deleteById(makeupId);
+ 	        return "redirect:../makeuplist";
+ 	    }
+ 	    
+ 	    @RequestMapping(value = "/edit/{id}")
+ 	    public String editMakeup(@PathVariable("id") Long makeupid, Model model) {
+ 	    	model.addAttribute("makeup", repository.findById(makeupid));
+ 	    	model.addAttribute("categories", drepository.findAll());
+ 	        return "editmakeup";
+ 	    }
+ 	    
+ }
