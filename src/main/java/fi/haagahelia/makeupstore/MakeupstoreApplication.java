@@ -33,6 +33,13 @@ public CommandLineRunner makeupDemo(MakeupRepository repository, CategoryReposit
 		repository.save(new Makeup("Nuxe", "Huile Prodigieuse Multi-Usage Dry Oil", "50 ml", "€15,95", drepository.findByName("Body product").get(0)));
 		repository.save(new Makeup("Elizabeth Arden", "Eight Hour Cream Nourishing Lip Balm ", "50 ml", "€19,95", drepository.findByName("Face product").get(0)));
 		repository.save(new Makeup("Revolution", "Makeup Luxury Banana Powder", "42 g", "€14,25", drepository.findByName("Face product").get(0)));
+		repository.save(new Makeup("Paese", "Rice Powder", "15 g", "€9,95", drepository.findByName("Face product").get(0)));
+		repository.save(new Makeup("Britney Spears", "Midnight Fantasy Fragrance Mist", "236 ml", "€6,25", drepository.findByName("Body product").get(0)));
+		repository.save(new Makeup("Fresh Juice", "Litchi & Ginger Body Scrub", "200 ml", "€3,95", drepository.findByName("Body product").get(0)));
+		repository.save(new Makeup("Morphe", "The Jaclyn Hill Eyeshadow Palette", "12.8 ounces", "€43,45", drepository.findByName("Face product").get(0)));
+		repository.save(new Makeup("Urban Decay", "Run To Born Eyeshadow Palette", "0.42 oz", "€46,45", drepository.findByName("Face product").get(0)));
+		repository.save(new Makeup("Too Faced", "Born This Way Foundation", "30 ml", "€33,95", drepository.findByName("Face product").get(0)));
+		repository.save(new Makeup("Ameliorate", "Smoothing Body Exfoliant", "150 ml", "€20,45", drepository.findByName("Body product").get(0)));
 		
 		User user1 = new User("user", "$2a$04$RViIFdkClmAyI1mQg/32v.Qg2C2grOqxiX5r18rxSWRX.oKZNkRe6", "USER");
 		User user2 = new User("admin", "$2a$04$TUKy8DAFdqAKqONx7SR4ze9R3eOr3tmX7K0HKh2qypgGzNAgLrbbK", "ADMIN");
