@@ -25,7 +25,7 @@ public class PdfView extends AbstractPdfView {
         // change the file name
         response.setHeader("Content-Disposition", "attachment; filename=\"my-pdf-file.pdf\"");
 
-        List<Makeup> makeups = (List<Makeup>) model.get("makeups");
+        List<Makeup> makeups = (List<Makeup>) model.get("makeuplist");
         document.add(new Paragraph("Generated makeup list " + LocalDate.now()));
 
         PdfPTable table = new PdfPTable(makeups.stream().findAny().get().getColumnCount());

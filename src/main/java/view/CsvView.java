@@ -13,14 +13,13 @@ import org.supercsv.prefs.CsvPreference;
 import fi.haagahelia.makeupstore.domain.Makeup;
 public class CsvView extends AbstractCsvView {
 
-
     @Override
     protected void buildCsvDocument(Map<String, Object> model, HttpServletRequest request, HttpServletResponse
             response) throws Exception {
 
         response.setHeader("Content-Disposition", "attachment; filename=\"my-csv-file.csv\"");
 
-        List<Makeup> makeups = (List<Makeup>) model.get("makeups");
+        List<Makeup> makeups = (List<Makeup>) model.get("makeup");
         String[] header = {"Brand", "Name", "Size", "Price", "Category"};
         ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
                 CsvPreference.STANDARD_PREFERENCE);

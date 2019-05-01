@@ -80,5 +80,14 @@ public class MakeupstoreController {
  	    	model.addAttribute("categories", drepository.findAll());
  	        return "editmakeup";
  	    }
+ 	 //excel
+ 		@RequestMapping(value = "/download/xls", method = RequestMethod.GET)
+ 		 public @ResponseBody List<Makeup> excel() {	
+ 	        return (List<Makeup>) repository.findAll();
+ 	   } 
+ 		@RequestMapping(value = "/download/pdf", method = RequestMethod.GET)
+		 public @ResponseBody List<Makeup> pdf() {	
+	        return (List<Makeup>) repository.findAll();
+	   } 
  	    
  }

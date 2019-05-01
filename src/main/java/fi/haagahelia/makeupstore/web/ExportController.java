@@ -1,5 +1,4 @@
 package fi.haagahelia.makeupstore.web;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +17,8 @@ public class ExportController {
      */
     @GetMapping("/download")
     public String download(Model model) {
-
-        model.addAttribute("makeuplist", makeupRepository.findAll());
+    	
+		model.addAttribute("makeuplist", makeupRepository.findAll());
         return "";
     }
 
