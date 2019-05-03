@@ -26,7 +26,7 @@ public class MakeupstoreController {
 	@Autowired
 	private CategoryRepository drepository;
 	
-	// Show all items
+	// Log in
     @RequestMapping(value="/login")
     public String login() {	
         return "login";
@@ -53,7 +53,7 @@ public class MakeupstoreController {
     public @ResponseBody Optional<Makeup> findMakeupRest(@PathVariable("id") Long makeupId) {	
     	return repository.findById(makeupId);
     } 
-	
+	//Add makeup functionality
     @PreAuthorize("hasAuthority('ADMIN')")
  		@RequestMapping(value = "/addmakeup")
  	    public String addMakeup(Model model){
@@ -61,19 +61,19 @@ public class MakeupstoreController {
  	    	model.addAttribute("categories", drepository.findAll());
  	        return "addmakeup";
  	    }   
- 		
- 	    @RequestMapping(value = "/save", method = RequestMethod.POST)
- 	    public String save(Makeup makeup){
- 	        repository.save(makeup);
- 	        return "redirect:makeuplist";
- 	    }
-
+ 	// Save makeup functionality	
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+	    public String save(Makeup makeup){
+	        repository.save(makeup);
+	        return "redirect:makeuplist";
+	    }
+// Delete makeup functionality	
  	    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
  	    public String deleteMakeup(@PathVariable("id") Long makeupId, Model model) {
  	    	repository.deleteById(makeupId);
  	        return "redirect:../makeuplist";
  	    }
- 	    
+ 	// Edit makeup functionality	    
  	    @RequestMapping(value = "/edit/{id}")
  	    public String editMakeup(@PathVariable("id") Long makeupid, Model model) {
  	    	model.addAttribute("makeup", repository.findById(makeupid));

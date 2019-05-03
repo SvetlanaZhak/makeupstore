@@ -27,7 +27,7 @@
 			<div style="clear: both; display: block; height: 10px;"></div>	
 			
 			
-			<label for="price">Price</label>
+			<label for="price">Price in €</label>
 			<input type="text" th:field="*{price}" />
 			<div th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
 			<div style="clear: both; display: block; height: 10px;"></div>	

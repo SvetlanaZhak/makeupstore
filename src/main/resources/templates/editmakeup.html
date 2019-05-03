@@ -23,7 +23,7 @@
 <input type="text" id="size" th:field="*{size}" class="form-control"/>
 <div th:if="${#fields.hasErrors('size')}" th:errors="*{size}">Size Error</div>
 <div style="clear: both; display: block; height: 10px;"></div>
-<label for="title">Price</label>
+<label for="title">Price in €</label>
 <input type="text" id ="price" th:field="*{price}" class="form-control" />
 <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
 <div style="clear: both; display: block; height: 10px;"></div>

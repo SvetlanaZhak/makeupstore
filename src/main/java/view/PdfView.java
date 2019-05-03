@@ -59,7 +59,7 @@ public class PdfView extends AbstractPdfView {
             table.addCell(makeup.getBrand());
             table.addCell(makeup.getName());
             table.addCell(makeup.getSize());
-            table.addCell(makeup.getPrice());
+           
             
 
         }

@@ -1,11 +1,14 @@
 package fi.haagahelia.makeupstore.domain;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,8 +18,14 @@ public class Makeup {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	
-private String brand, name, size, price;
+		
+		@NotNull
+	    @Size(min=2, max=50)
+	    
+private String brand, name, size;
+		 @NotNull
+
+		    private Double price;
 @ManyToOne
 @JsonIgnore
   @JoinColumn(name = "categoryid")
@@ -25,7 +34,7 @@ private String brand, name, size, price;
  public Makeup() {}
 
 
-public Makeup(String brand, String name, String size, String price, Category category) {
+public Makeup(String brand, String name, String size, Double price, Category category) {
 	super();
 	this.brand = brand;
 	this.name = name;
@@ -66,10 +75,10 @@ public void setSize(String size) {
 	this.size = size;
 }
 
-public String getPrice() {
+public Double getPrice() {
 	return price;
 }
-public void setPrice(String price) {
+public void setPrice(Double price) {
 	this.price = price;
 }
 
